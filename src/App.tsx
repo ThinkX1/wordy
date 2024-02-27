@@ -13,8 +13,9 @@ function App() {
 		})}, [setSolution]);
   return (
     <>
-	<h1>وُوردي</h1>
-		<Wordle solution={solution} />
+			<h1>وُوردي</h1>
+			<Wordle solution={solution} />
+
     </>
   )
 }

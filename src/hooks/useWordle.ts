@@ -3,7 +3,7 @@ import { useState } from 'react';
 export const useWordle = (solution) => {
 	const [turn, setTurn] = useState(0);
 	const [currentGuess, setCurrentGuess] = useState('');
-	const [guesses, setGuesses] = useState([]) // each guess is an array
+	const [guesses, setGuesses] = useState([...Array(6)]) // each guess is an array
 	const [history, setHistory] = useState([]) // each guess is a sttring
 	const [isCorrect, setIsCorrect] = useState(false);
 
@@ -13,7 +13,7 @@ export const useWordle = (solution) => {
 		const formattedGuess = [...currentGuess].map((l) => {
 			return {
 				key: l,
-				color: 'gray'
+				color: 'grey'
 			}
 		});
 
@@ -38,8 +38,26 @@ export const useWordle = (solution) => {
 	//add a new guess to the guesses state
 	// update the isCorrect 
 	// add one to the turn 
-	const addNewGuess = () => {
+	const addNewGuess = (formattedGuess) => {
+		if(currentGuess === solution) {
+			setIsCorrect(true);
+		}
+		setGuesses(prevGuesses => {
+			let newGuesses = [...prevGuesses];
+			newGuesses[turn] = formattedGuess ;
+			return newGuesses;
+		})
 
+		setHistory(prevHistory => {
+			return[...prevHistory, currentGuess];
+		})
+
+		setTurn(prevTurn => {
+			return prevTurn + 1
+		});
+		
+
+		setCurrentGuess('');
 	}
 
 
@@ -64,8 +82,7 @@ export const useWordle = (solution) => {
 			}
 		
 		const formatted = formatGuess();
-		console.log(formatted);
-
+		addNewGuess(formatted);
 		}
 
 
