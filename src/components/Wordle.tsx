@@ -12,13 +12,9 @@ export const Wordle = ({ solution }) => {
 		return () => window.removeEventListener('keyup', handleKeyup)
 	}, [handleKeyup]);
 
-	useEffect(() => {
-		console.log(guesses, turn, isCorrect, currentGuess);
-	}, [guesses, turn, isCorrect]);
 
 	return (
 		<div>
-			<p> {solution} , Current Guess - {currentGuess} </p>
 			<Grid guesses={guesses} currentGuess={currentGuess} turn={turn} />
 			<Keypad usedKeys = {usedKeys}/>
 		</div>

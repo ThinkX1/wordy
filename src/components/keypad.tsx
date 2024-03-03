@@ -10,7 +10,7 @@ export function Keypad({usedKeys}) {
 					return (
 						<div key={l} className={color}>{l}</div>
 					)
-			})};
+			})}
 		</div>
 		)
 };
