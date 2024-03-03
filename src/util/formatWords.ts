@@ -49,7 +49,7 @@ export const formatCurrentGuess = (guess) =>  {
 		}
 		if(i === 4) {
 			if(!letters.includes(guess[3])){
-				return "ــ" + l;
+				return "ـ" + l;
 			} else { 
 				return l;
 			}
