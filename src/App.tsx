@@ -1,14 +1,10 @@
-import { useState, useEffect } from 'react';
 import { Wordle } from './components/Wordle';
-import { wordList } from './wordList';
-
+import { words } from './words';
 
 function App() {
-  const [solution, setSolution] = useState(null);
 
-		const randomSolution = wordList[Math.floor(Math.random()*wordList.length)];
-		//setSolution(randomSolution.word);
-
+		const randomSolution = words[Math.floor(Math.random()*words.length)];
+		console.log(randomSolution)
   return (
     <>
 			<h1>وُوردي</h1>

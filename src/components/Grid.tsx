@@ -1,9 +1,15 @@
-
+import { FC }  from 'react';
 import { Row}  from './Row';
 
+interface Props {
+	guesses : [];
+	currentGuess : string[];
+	turn: number
+}	
 
 
-export const Grid = ({ guesses, currentGuess, turn}) => {
+
+export const Grid: FC<Props> = ({ guesses, currentGuess, turn}) => {
 		console.log('grid', turn ,currentGuess);
 		return (
 			<div>

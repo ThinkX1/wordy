@@ -1,6 +1,9 @@
 
+const letters = ["أ" , "ا", "إ", "د", "ذ", "ر", "ز", "و", "ؤ", "ء",];
+
+
+
 export const formatLetters = (guess) =>  {
-	const letters = ["أ" , "ا", "إ", "د", "ذ", "ر", "ز", "و"];
 	
 	const formattedArray = guess.map((l,i) => {
 		if(i === 0 ) {
@@ -14,7 +17,7 @@ export const formatLetters = (guess) =>  {
 			if(i === 4 && !letters.includes(guess[3].key) ){
 				return   { key : "ـ"+ guess[i].key, color: guess[i].color }
 			} else if(letters.includes(guess[i - 1].key)) {
-					if(letters.includes(l.key) | i === 4) {
+					if(letters.includes(l.key) || i === 4) {
 						return l
 					} 
 						console.log('key after lett', l.key, guess[i].key + "ــ");
@@ -34,7 +37,6 @@ export const formatLetters = (guess) =>  {
 
 
 export const formatCurrentGuess = (guess) =>  {
-	const letters = ["أ", "إ", "ا", "د", "ذ", "ر", "ز", "و"];
 
 	const formatted = guess.map((l, i) => {
 

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { words } from '../words';
 
 export const useWordle = (solution) => {
 	const [turn, setTurn] = useState(0);
@@ -70,8 +71,8 @@ export const useWordle = (solution) => {
 					prevUsedKeys[l.key] = 'yellow'
 					return;
 				}
-				if(l.color === 'gray' && currentColor !== ('green' || 'yellow')) {
-					prevUsedKeys[l.key] = 'gray'
+				if(l.color === 'grey' && currentColor !== ('green' || 'yellow')) {
+					prevUsedKeys[l.key] = 'grey'
 					return; 
 				}
 				})
@@ -90,7 +91,7 @@ export const useWordle = (solution) => {
 		if(key === 'Enter') {
 			//only 5 turns 
 			if(turn > 5) {
-				console.log('استنفدت عدد المحالولاتط');
+				console.log('استنفدت عدد المحالولات');
 				return
 			}
 			// do not allow duplicate words
@@ -102,6 +103,11 @@ export const useWordle = (solution) => {
 			if(currentGuess.length !== 5) {
 				console.log('الكلمة يجب ان تتكون من خمسة أحرف');
 				return
+			}
+
+			if(!words.includes(currentGuess)){
+				console.log('الكلمة غير موجودة في قائمة المفردات !');
+				return;
 			}
 		
 		const formatted = formatGuess();
