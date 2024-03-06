@@ -1,6 +1,12 @@
 import { formatLetters, formatCurrentGuess } from '../util/formatWords.ts';
 
-export const Row = ({guess, currentGuess}) => {
+interface Props {
+	guess?: [],
+	correntGuess?: []
+}
+
+		
+export const Row :FC<Props> = ({guess, currentGuess}) => {
 	if(guess) {
 		let formattedGuess = formatLetters(guess);
 		return (

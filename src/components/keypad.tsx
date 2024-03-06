@@ -1,4 +1,13 @@
-export function Keypad({usedKeys}) {
+import { FC } from 'react'
+
+
+interface Props {
+	usedKeys: [];
+}
+
+
+
+export const  Keypad : FC<Props> = ({usedKeys}) =>  {
 
 	const letters = [ "ذ", "ض", "ص", "ث", "ق", "ف", "غ", "هـ", "خ", "ح", "ج", "د", "ش", "س", "ي", "ب", "ل", "ا", "أ", "إ", "ت", "ن", "م", "ك", "ط", "ئ", "ء", "ؤ", "ر", "ى", "ة", "و", "ز", "ظ" ];
 
