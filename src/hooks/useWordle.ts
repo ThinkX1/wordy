@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { words } from '../words';
 
-export const useWordle = (solution) => {
+export const useWordle = (solution: string) => {
 	const [turn, setTurn] = useState(0);
 	const [currentGuess, setCurrentGuess] = useState('');
 	const [guesses, setGuesses] = useState([...Array(6)]) // each guess is an array
-	const [history, setHistory] = useState([]) // each guess is a sttring
+	const [history, setHistory] = useState([...Array('')]) // each guess is a sttring
 	const [isCorrect, setIsCorrect] = useState(false);
 
-	const [usedKeys, setUsedKeys] = useState({});
+	const [usedKeys] = useState({});
 
 	// format aguess [{key: 'a', color: 'yellow'})
 	const formatGuess = () => {
@@ -23,14 +23,14 @@ export const useWordle = (solution) => {
 		formattedGuess.forEach((l, i) => {
 			if(solutionArray[i] === l.key){
 				formattedGuess[i].color = 'green';
-				solutionArray[i] = null;
+				solutionArray[i] = '';
 			}
 		});
 
 		formattedGuess.forEach((l, i) => {
 			if(solutionArray.includes(l.key) && l.color !== 'green') {
 				formattedGuess[i].color = 'yellow';
-				solutionArray[solutionArray.indexOf(l.key)] = null;
+				solutionArray[solutionArray.indexOf(l.key)] = '';
 			}
 		});
 		
@@ -41,26 +41,26 @@ export const useWordle = (solution) => {
 	//add a new guess to the guesses state
 	// update the isCorrect 
 	// add one to the turn 
-	const addNewGuess = (formattedGuess) => {
+	const addNewGuess = (formattedGuess : {key: string, color: string}[]) => {
 		if(currentGuess === solution) {
 			setIsCorrect(true);
 		}
 		setGuesses(prevGuesses => {
-			let newGuesses = [...prevGuesses];
+			const  newGuesses = [...prevGuesses];
 			newGuesses[turn] = formattedGuess ;
 			return newGuesses;
 		})
 
-		setHistory(prevHistory => {
+		setHistory((prevHistory ) => {
 			return[...prevHistory, currentGuess];
 		})
 
 		setTurn(prevTurn => {
 			return prevTurn + 1
 		});
-		
-		setUsedKeys(prevUsedKeys => {
-			formattedGuess.forEach(l => {
+		/*
+		setUsedKeys((prevUsedKeys )=> {
+			formattedGuess.forEach((l  )  => {
 				const currentColor = prevUsedKeys[l.key];
 				
 				if(l.color === 'green'){
@@ -79,6 +79,7 @@ export const useWordle = (solution) => {
 
 				return prevUsedKeys
 			})
+      */
 		
 
 		setCurrentGuess('');
@@ -86,7 +87,8 @@ export const useWordle = (solution) => {
 
 
 	// handle keyup event 
-	const handleKeyup = ({key}) => {
+	const handleKeyup = (e: KeyboardEvent) => {
+    const { key } = e;
 
 		if(key === 'Enter') {
 			//only 5 turns 

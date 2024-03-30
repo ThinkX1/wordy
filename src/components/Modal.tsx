@@ -1,6 +1,9 @@
+import { FC } from 'react';
+
+
 
 interface Props {
-	isCOrrect: boolean,
+	isCorrect: boolean,
 	solution: string,
 	turn: number
 }

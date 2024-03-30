@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, FC } from 'react';
 import { useWordle } from '../hooks/useWordle';
 import { Grid } from './Grid';
-import { Keypad } from './keypad';
+//import { Keypad } from './keypad';
 import { Modal } from './Modal';
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const Wordle : FC<Props> = ({ solution }) => {
-	const { currentGuess, handleKeyup, guesses, turn, isCorrect, usedKeys	 } = useWordle(solution);
+	const { currentGuess, handleKeyup, guesses, turn, isCorrect	 } = useWordle(solution);
 	const [showModal, setShowModal] = useState(false);
 
 	useEffect(() => {
@@ -27,13 +27,12 @@ export const Wordle : FC<Props> = ({ solution }) => {
 		} 
 
 		return () => window.removeEventListener('keyup', handleKeyup)
-	}, [handleKeyup]);
+	}, [handleKeyup, isCorrect, turn]);
 
 
 	return (
 		<div>
 			<Grid guesses={guesses} currentGuess={currentGuess} turn={turn} />
-			<Keypad usedKeys = {usedKeys}/>
 			{ showModal && <Modal isCorrect={isCorrect} turn={turn} solution={solution} /> }
 		</div>
 	)

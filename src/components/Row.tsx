@@ -1,26 +1,31 @@
 import { formatLetters, formatCurrentGuess } from '../util/formatWords.ts';
+import { FC } from 'react';
 
 interface Props {
-	guess?: [],
-	correntGuess?: []
+	guesses?: [],
+	currentGuess?: string 
 }
 
 		
-export const Row :FC<Props> = ({guess, currentGuess}) => {
-	if(guess) {
-		let formattedGuess = formatLetters(guess);
+export const Row :FC<Props> = ({guesses, currentGuess}) => {
+	if(guesses) {
+		const formattedGuess = formatLetters(guesses);
 		return (
 			<div className="row past">
-				{ formattedGuess.map((l, i) => (
-						<div key={i} className={l.color}>{l.key }</div>
+				{ formattedGuess?.map((l, i) => (
+                    <div 
+                    key={i} 
+                    className={l.color}>
+                    {l.key}
+                    </div>
 
-					))}
+                ))}
 			</div>
 		)
 	}
 
 	if(currentGuess) {
-		let letters = currentGuess.split('');
+		const letters = currentGuess.split('');
 		const formattedCurrentGuess = formatCurrentGuess(letters);
 		console.log('curentGuess........', letters);	
 		return (
@@ -37,12 +42,12 @@ export const Row :FC<Props> = ({guess, currentGuess}) => {
 	}
 
 	return (
-		<div className="row">
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
+		<div className="row child-borders">
+				<div className="border border-primary"></div>
+				<div  className="border border-primary"></div>
+				<div  className="border border-primary"></div>
+				<div  className="border border-primary"></div>
+				<div className="border border-primary"></div>
 		</div>
 	)
 }	

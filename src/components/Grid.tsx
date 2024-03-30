@@ -2,8 +2,8 @@ import { FC }  from 'react';
 import { Row}  from './Row';
 
 interface Props {
-	guesses : [];
-	currentGuess : string[];
+	guesses : any[];
+	currentGuess : string;
 	turn: number
 }	
 
@@ -17,7 +17,7 @@ export const Grid: FC<Props> = ({ guesses, currentGuess, turn}) => {
 				if(turn === i){
 					return <Row key={i} currentGuess={currentGuess} />
 				}
-				return <Row key={i} guess={g}  />
+				return <Row key={i} guesses={g}  />
 			})}
 			</div>
 		)

@@ -1,9 +1,12 @@
 
 const letters = ["أ" , "ا", "إ", "د", "ذ", "ر", "ز", "و", "ؤ", "ء",];
 
+interface LetterInGuess  {
+  key : string,
+  color: any
+}
 
-
-export const formatLetters = (guess) =>  {
+export const formatLetters = (guess: LetterInGuess[]): LetterInGuess[] =>  {
 	
 	const formattedArray = guess.map((l,i) => {
 		if(i === 0 ) {
@@ -36,7 +39,7 @@ export const formatLetters = (guess) =>  {
 };
 
 
-export const formatCurrentGuess = (guess) =>  {
+export const formatCurrentGuess = (guess: string[]): string[] =>  {
 
 	const formatted = guess.map((l, i) => {
 

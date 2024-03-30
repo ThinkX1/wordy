@@ -15,9 +15,9 @@ export const  Keypad : FC<Props> = ({usedKeys}) =>  {
 	return (	
 		<div className="keypad">
 			{ letters.map( l => {
-					const color = usedKeys[l];
+					//const color = usedKeys[l];
 					return (
-						<div key={l} className={color}>{l}</div>
+						<div key={l} className={''}>{l}</div>
 					)
 			})}
 		</div>
