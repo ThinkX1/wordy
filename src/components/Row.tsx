@@ -15,7 +15,7 @@ export const Row :FC<Props> = ({guesses, currentGuess}) => {
 				{ formattedGuess?.map((l, i) => (
                     <div 
                     key={i} 
-                    className={l.color}>
+                    className={l.color + ' border border-primary'}>
                     {l.key}
                     </div>
 
@@ -31,7 +31,7 @@ export const Row :FC<Props> = ({guesses, currentGuess}) => {
 		return (
 			<div className="row current">
 				{formattedCurrentGuess.map((l, i) => (
-					<div key={i} className="filled">{l}</div>
+					<div key={i} className="border border-primary filled">{l}</div>
 				)
 			)}
 			{[...Array(5 - letters.length)].map(( _, i) => (
