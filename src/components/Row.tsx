@@ -35,7 +35,7 @@ export const Row :FC<Props> = ({guesses, currentGuess}) => {
 				)
 			)}
 			{[...Array(5 - letters.length)].map(( _, i) => (
-				<div key={i}></div>
+				<div key={i} className="border border-primary"></div>
 			))}
 			</div>
 		)

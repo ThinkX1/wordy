@@ -1,5 +1,5 @@
 
-const letters = ["أ" , "ا", "إ", "د", "ذ", "ر", "ز", "و", "ؤ", "ء",];
+const letters = ["أ" , "ا", "إ", "د", "ذ", "ر", "ز", "و", "ؤ", "ء", "آ"];
 
 interface LetterInGuess  {
   key : string,
