@@ -3,13 +3,14 @@ import { useWordle } from '../hooks/useWordle';
 import { Grid } from './Grid';
 //import { Keypad } from './keypad';
 import { Modal } from './Modal';
+import { Keypad } from './keypad';
 
 interface Props {
 	solution: string
 }
 
 export const Wordle : FC<Props> = ({ solution }) => {
-	const { currentGuess, handleKeyup, guesses, turn, isCorrect	 } = useWordle(solution);
+	const { currentGuess, handleKeyup, guesses, turn, isCorrect, usedKeys	 } = useWordle(solution);
 	const [showModal, setShowModal] = useState(false);
 
 	useEffect(() => {
@@ -34,6 +35,7 @@ export const Wordle : FC<Props> = ({ solution }) => {
 		<div>
 			<Grid guesses={guesses} currentGuess={currentGuess} turn={turn} />
 			{ showModal && <Modal isCorrect={isCorrect} turn={turn} solution={solution} /> }
+      <Keypad usedKeys={usedKeys}/>
 		</div>
 	)
 }
