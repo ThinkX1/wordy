@@ -97,6 +97,9 @@ export const useWordle = (solution: string) => {
 	const handleKeyup = (e: KeyboardEvent) => {
     const { key } = e;
 
+
+    console.log('handleKeyup', key)
+
 		if(key === 'Enter') {
 			//only 5 turns 
 			if(turn > 5) {
