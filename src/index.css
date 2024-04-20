@@ -65,22 +65,22 @@ color: #333;
 }
 
 .keypad {
-	max-width: 500px;
+	max-width: 415px;
 	margin: 5px auto;
 	direction: ltr;
 	}
 .keypad > div {
 	margin: 3px;
-	width: 40px;
+	width: 36px;
 	height: 40px;
 	display: inline-block;
 }
 
 .keypad .enter {
-  width: 150px;
+  width: 55px;
 }
 .keypad .backspace {
-  width: 110px;
+  width: 50px;
 }
 
 .keypad > div.green {
