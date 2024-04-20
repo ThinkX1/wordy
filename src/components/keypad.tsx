@@ -54,12 +54,12 @@ export const Keypad: FC<Props> = ({ usedKeys }) => {
     "ؤ",
     "ر",
     "ى",
+    "مسح",
     "ة",
     "و",
     "ز",
     "ظ",
     "إدخال",
-    "مسح",
   ];
 
   console.log("keypad ===> usedKeys", usedKeys);
@@ -70,7 +70,7 @@ export const Keypad: FC<Props> = ({ usedKeys }) => {
         return (
           <div
             key={l}
-            className={color + " border border-primary"}
+            className={ l === "إدخال" ? "enter border border-primary" : l === "مسح" ? "backspace border border-primary" : color + " border border-primary"   }
             onClick={handleClick}
           >
             {l}
