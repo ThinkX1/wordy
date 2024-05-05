@@ -70,17 +70,17 @@ color: #333;
 	direction: ltr;
 	}
 .keypad > div {
-	margin: 3px;
+	margin: 2.75px;
 	width: 36px;
 	height: 40px;
 	display: inline-block;
 }
 
 .keypad .enter {
-  width: 55px;
+  width: 100px;
 }
 .keypad .backspace {
-  width: 50px;
+  width: 85px;
 }
 
 .keypad > div.green {

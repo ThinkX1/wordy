@@ -15,8 +15,10 @@ export const Keypad: FC<Props> = ({ usedKeys }) => {
       keyName = "Enter";
     } else if (keyName == "مسح") {
       keyName = "Backspace";
+    } else if (keyName == "هـ") {
+      keyName = "ه"
     }
-    console.log(e.target, keyName);
+
 
     window.dispatchEvent(
       new KeyboardEvent("keyup", { key: keyName ? keyName : "" }),
@@ -31,6 +33,7 @@ export const Keypad: FC<Props> = ({ usedKeys }) => {
     "ق",
     "ف",
     "غ",
+    "ع",
     "هـ",
     "خ",
     "ح",
@@ -51,9 +54,9 @@ export const Keypad: FC<Props> = ({ usedKeys }) => {
     "ط",
     "ئ",
     "ء",
-    "مسح",
     "ؤ",
     "ر",
+    "مسح",
     "ى",
     "ة",
     "و",
