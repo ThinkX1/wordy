@@ -35,7 +35,7 @@ export const Wordle : FC<Props> = ({ solution }) => {
 	return (
 		<div>
 			<Grid guesses={guesses} currentGuess={currentGuess} turn={turn} />
-			{ showModal && <ResultModal isOpen={true} onClese={() => console.log('colse')}  solution={solution} /> }
+			{ showModal && <ResultModal isOpen={true} onClose={() => console.log('colse')}  solution={solution} /> }
       <Keypad usedKeys={usedKeys}/>
 		</div>
 	)
