@@ -1,30 +1,60 @@
-import { FC } from 'react';
+import { FC, ReactNode, useEffect, useRef, useState, KeyboardEvent } from 'react';
 
 
 
 interface Props {
-	isCorrect: boolean,
-	solution: string,
-	turn: number
+  isOpen: boolean,
+  hasCloseBtn?: boolean,
+  onClose?: () => void,
+  children: ReactNode,
 }
 	
 
-export const  Modal: FC<Props> = ({ isCorrect, solution, turn }) => {
+export const  Modal: FC<Props> = ({ isOpen, hasCloseBtn, onClose, children }) => {
+  const [isModalOpen, setModalOpen] = useState(isOpen);
+  const modalRef = useRef<HTMLDialogElement | null>(null);
+
+  const handleCloseModal = () => {
+    if(onClose) {
+      onClose();
+    }
+    setModalOpen(false);
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLDialogElement>) => {
+    if(e.key === "Escape") {
+      handleCloseModal();
+    }
+  };
+
+
+
+  useEffect(() => {
+    setModalOpen(isOpen);
+    }, [isOpen]);
+
+  useEffect(() => {
+    const modalElement = modalRef.current;
+    if(modalElement) {
+      if(isModalOpen) {
+      console.log('isModalOpen', isModalOpen, modalElement, modalRef)
+      modalElement.showModal();
+      } else {
+        modalElement.close();
+      }
+    }
+  }, [isModalOpen]);
+
+
 	return (
-		<div className="modal">
-			{ isCorrect && (
-				<div>
-					<h1> كسبت !! </h1>
-					<p className="solution">{solution}</p>
-					<p>لقد وجدت الحل في {turn}  محاولات :</p> 
-				</div>
-			)}
-			{!isCorrect && (
-				<div>
-					<h1> حاول مرة أخرى</h1>
-					<p className="solution">{solution}</p>
-				</div>
-			)}
-		</div>
+  <dialog ref={modalRef} className="modal-dialog" onKeyDown={handleKeyDown}>
+    {hasCloseBtn && (
+      <button className="modal-close-btn" onClick={handleCloseModal}>
+        Close
+      </button>
+    )}
+    {children}
+  </dialog>
+			
 		)
 }

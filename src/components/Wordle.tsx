@@ -2,8 +2,8 @@ import { useEffect, useState, FC } from 'react';
 import { useWordle } from '../hooks/useWordle';
 import { Grid } from './Grid';
 //import { Keypad } from './keypad';
-import { Modal } from './Modal';
 import { Keypad } from './keypad';
+import { ResultModal } from './ResultModal';
 
 interface Props {
 	solution: string
@@ -19,6 +19,7 @@ export const Wordle : FC<Props> = ({ solution }) => {
 		if(isCorrect) {
 
 			setTimeout(() => setShowModal(true), 2000);
+      console.log(isCorrect, showModal);
 			window.removeEventListener('keyup', handleKeyup);
 		}
 
@@ -34,7 +35,7 @@ export const Wordle : FC<Props> = ({ solution }) => {
 	return (
 		<div>
 			<Grid guesses={guesses} currentGuess={currentGuess} turn={turn} />
-			{ showModal && <Modal isCorrect={isCorrect} turn={turn} solution={solution} /> }
+			{ showModal && <ResultModal isOpen={true} onClese={() => console.log('colse')}  solution={solution} /> }
       <Keypad usedKeys={usedKeys}/>
 		</div>
 	)

@@ -1,3 +1,5 @@
+import { Header } from './components/Header';
+import { ResultModal } from './components/ResultModal';
 import { Wordle } from './components/Wordle';
 import { words } from './words';
 
@@ -7,8 +9,9 @@ function App() {
 		console.log(randomSolution)
   return (
     <>
-			<h1>وُوردي</h1>
+      <Header />
 			<Wordle solution={randomSolution} />
+      <ResultModal isOpen={false} onClose={()=> console.log('closed')} solution={randomSolution} />
 
     </>
   )
